@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1,0" />
+    <meta name="author" content="Peter Kibet" />
+    <title>React Documentation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>React Documentation</header>
+      <ul>
+        <li>
+          <a class="nav-link" href="#Introduction">Introduction</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Hello_React">Hello React</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Use_Cases">Use cases</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#How_react_uses_javascript"
+            >How react uses Javascript</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Setting_up_your_first_react_app"
+            >Setting up your first React app</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Moving_on_to_main">Moving on to main</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Starting_Fresh">Starting fresh</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <div class="section-content">
+          <p>
+            In this article we will say hello to React. We'll discover a little
+            bit of detail about its background and use cases, set up a basic
+            React toolchain on our local computer, and create and play with a
+            simple starter app — learning a bit about how React works in the
+            process.
+          </p>
+          <figure>
+            <table>
+              <tbody>
+                <tr>
+                  <th scope="row">Prerequisites:</th>
+                  <td>
+                    <p>
+                      Familiarity with the core
+                      <a href="/en-US/docs/Learn/HTML">HTML</a>,
+                      <a href="/en-US/docs/Learn/CSS">CSS</a>, and
+                      <a href="/en-US/docs/Learn/JavaScript">JavaScript</a>
+                      languages, knowledge of the
+                      <a
+                        href="/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line"
+                        >terminal/command line</a
+                      >.
+                    </p>
+                    <p>
+                      React uses an HTML-in-JavaScript syntax called JSX
+                      (JavaScript and XML). Familiarity with both HTML and
+                      JavaScript will help you to learn JSX, and better identify
+                      whether bugs in your application are related to JavaScript
+                      or to the more specific domain of React.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Objective:</th>
+                  <td>
+                    <p>
+                      To set up a local React development environment, create a
+                      start app, and understand the basics of how it works.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+        </div>
+      </section>
+      <section class="main-section" id="Hello_React">
+        <header>Hello React</header>
+        <div class="section-content">
+          <p>
+            As its official tagline states,
+            <a href="https://react.dev/" class="external" target="_blank"
+              >React</a
+            >
+            is a library for building user interfaces. React is not a framework
+            – it's not even exclusive to the web. It's used with other libraries
+            to render to certain environments. For instance,
+            <a href="https://reactnative.dev/" class="external" target="_blank"
+              >React Native</a
+            >
+            can be used to build mobile applications.
+          </p>
+          <p>
+            To build for the web, developers use React in tandem with
+            <a
+              href="https://react.dev/reference/react-dom"
+              class="external"
+              target="_blank"
+              >ReactDOM</a
+            >. React and ReactDOM are often discussed in the same spaces as —
+            and utilized to solve the same problems as — other true web
+            development frameworks. When we refer to React as a "framework",
+            we're working with that colloquial understanding.
+          </p>
+          <p>
+            React's primary goal is to minimize the bugs that occur when
+            developers are building UIs. It does this through the use of
+            components — self-contained, logical pieces of code that describe a
+            portion of the user interface. These components can be composed
+            together to create a full UI, and React abstracts away much of the
+            rendering work, leaving you to concentrate on the UI design.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Use_Cases">
+        <header>Use Cases</header>
+        <div class="section-content">
+          <p>
+            Unlike the other frameworks covered in this module, React does not
+            enforce strict rules around code conventions or file organization.
+            This allows teams to set conventions that work best for them, and to
+            adopt React in any way they would like to. React can handle a single
+            button, a few pieces of an interface, or an app's entire user
+            interface.
+          </p>
+          <p>
+            While React <em>can</em> be used for
+            <a
+              href="https://react.dev/learn/add-react-to-an-existing-project"
+              class="external"
+              target="_blank"
+              >small pieces of an interface</a
+            >, it's not as easy to "drop into" an application as a library like
+            jQuery, or even a framework like Vue — it is more approachable when
+            you build your entire app with React.
+          </p>
+          <p>
+            In addition, many of the developer-experience benefits of a React
+            app, such as writing interfaces with JSX, require a compilation
+            process. Adding a compiler like Babel to a website makes the code on
+            it run slowly, so developers often set up such tooling with a build
+            step. React arguably has a heavy tooling requirement, but it can be
+            learned.
+          </p>
+          <p>
+            This article is going to focus on the use case of using React to
+            render the entire user interface of an application with the support
+            of
+            <a href="https://vitejs.dev/" class="external" target="_blank"
+              >Vite</a
+            >, a modern front-end build tool.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="How_react_uses_javascript">
+        <header>How react uses javascript</header>
+        <div class="section-content">
+          <p>
+            React utilizes features of modern JavaScript for many of its
+            patterns. Its biggest departure from JavaScript comes with the use
+            of
+            <a
+              href="https://react.dev/learn/writing-markup-with-jsx"
+              class="external"
+              target="_blank"
+              >JSX</a
+            >
+            syntax. JSX extends JavaScript's syntax so that HTML-like code can
+            live alongside it. For example:
+          </p>
+          <div class="code-example">
+            <div class="example-header">
+              <span class="language-name">jsx</span
+              ><button type="button" class="icon copy-icon">
+                <span class="visually-hidden">Copy to Clipboard</span></button
+              ><span
+                class="copy-icon-message visually-hidden"
+                role="alert"
+              ></span>
+            </div>
+            <pre
+              class="brush: jsx notranslate"
+              data-signature="bCV4P1y2xX+2bsPXlRIShEUrf3DerTMZWakuD3kbesk="
+            ><code><span class="token keyword">const</span> heading <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Mozilla Developer Network</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">;</span>
+</code></pre>
+          </div>
+          <p>
+            This heading constant is known as a <strong>JSX expression</strong>.
+            React can use it to render that
+            <a href="/en-US/docs/Web/HTML/Element/Heading_Elements"
+              ><code>&lt;h1&gt;</code></a
+            >
+            tag in our app.
+          </p>
+          <p>
+            Suppose we wanted to wrap our heading in a
+            <a href="/en-US/docs/Web/HTML/Element/header"
+              ><code>&lt;header&gt;</code></a
+            >
+            tag, for semantic reasons? The JSX approach allows us to nest our
+            elements within each other, just like we do with HTML:
+          </p>
+          <div class="code-example">
+            <div class="example-header">
+              <span class="language-name">jsx</span
+              ><button type="button" class="icon copy-icon">
+                <span class="visually-hidden">Copy to Clipboard</span></button
+              ><span
+                class="copy-icon-message visually-hidden"
+                role="alert"
+              ></span>
+            </div>
+            <pre
+              class="brush: jsx notranslate"
+              data-signature="7GyPqOrZC+Kgzkk5fKlmgGoNUwkIGu4GxAUUvC8SgUU="
+            ><code><span class="token keyword">const</span> header <span class="token operator">=</span> <span class="token punctuation">(</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Mozilla Developer Network</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+          </div>
+          <div class="notecard note" id="sect1">
+            <p>
+              <strong>Note:</strong> The parentheses in the previous snippet
+              aren't unique to JSX, and don't have any effect on your
+              application. They're a signal to you (and your computer) that the
+              multiple lines of code inside are part of the same expression. You
+              could just as well write the header expression like this:
+            </p>
+            <div class="code-example">
+              <div class="example-header">
+                <span class="language-name">jsx</span
+                ><button type="button" class="icon copy-icon">
+                  <span class="visually-hidden">Copy to Clipboard</span></button
+                ><span
+                  class="copy-icon-message visually-hidden"
+                  role="alert"
+                ></span>
+              </div>
+              <pre
+                class="brush: jsx notranslate"
+                data-signature="nK+ORnLlGbrwLgo5ZQIuelNjOxEAmQWf0BRouOmRA1s="
+              ><code><span class="token keyword">const</span> header <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Mozilla Developer Network</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">;</span>
+</code></pre>
+            </div>
+            <p>
+              However, this looks kind of awkward, because the
+              <a href="/en-US/docs/Web/HTML/Element/header"
+                ><code>&lt;header&gt;</code></a
+              >
+              tag that starts the expression is not indented to the same
+              position as its corresponding closing tag.
+            </p>
+          </div>
+          <p>
+            Of course, your browser can't read JSX without help. When compiled
+            (using a tool like
+            <a href="https://babeljs.io/" class="external" target="_blank"
+              >Babel</a
+            >
+            or
+            <a href="https://parceljs.org/" class="external" target="_blank"
+              >Parcel</a
+            >), our header expression would look like this:
+          </p>
+          <div class="code-example">
+            <div class="example-header">
+              <span class="language-name">jsx</span
+              ><button type="button" class="icon copy-icon">
+                <span class="visually-hidden">Copy to Clipboard</span></button
+              ><span
+                class="copy-icon-message visually-hidden"
+                role="alert"
+              ></span>
+            </div>
+            <pre
+              class="brush: jsx notranslate"
+              data-signature="3otDmg5P9SJrpNfLNI3s+Ay2qgPCzUW80tGfdm5rEAE="
+            ><code><span class="token keyword">const</span> header <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+  <span class="token string">"header"</span><span class="token punctuation">,</span>
+  <span class="token keyword">null</span><span class="token punctuation">,</span>
+  React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"Mozilla Developer Network"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+          </div>
+          <p>
+            It's <em>possible</em> to skip the compilation step and use
+            <a
+              href="https://react.dev/reference/react/createElement"
+              class="external"
+              target="_blank"
+              ><code>React.createElement()</code></a
+            >
+            to write your UI yourself. In doing this, however, you lose the
+            declarative benefit of JSX, and your code becomes harder to read.
+            Compilation is an extra step in the development process, but many
+            developers in the React community think that the readability of JSX
+            is worthwhile. Plus, modern front-end development almost always
+            involves a build process anyway — you have to downlevel modern
+            syntax to be compatible with older browsers, and you may want to
+            <a href="/en-US/docs/Glossary/Minification">minify</a> your code to
+            optimize loading performance. Popular tooling like Babel already
+            comes with JSX support out-of-the-box, so you don't have to
+            configure compilation yourself unless you want to.
+          </p>
+          <p>
+            Because JSX is a blend of HTML and JavaScript, some developers find
+            it intuitive. Others say that its blended nature makes it confusing.
+            Once you're comfortable with it, however, it will allow you to build
+            user interfaces more quickly and intuitively, and allow others to
+            better understand your codebase at a glance.
+          </p>
+          <p>
+            To read more about JSX, check out the React team's
+            <a
+              href="https://react.dev/learn/writing-markup-with-jsx"
+              class="external"
+              target="_blank"
+              >Writing Markup with JSX</a
+            >
+            article.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Setting_up_your_first_react_app">
+        <header>Setting up your first react app</header>
+        <div class="section-content">
+          <p>
+            There are many ways to create a new React application. We're going
+            to use Vite to create a new application via the command line.
+          </p>
+          <p>
+            It's possible to
+            <a
+              href="https://react.dev/learn/add-react-to-an-existing-project"
+              class="external"
+              target="_blank"
+              >add React to an existing project</a
+            >
+            by copying some
+            <a href="/en-US/docs/Web/HTML/Element/script"
+              ><code>&lt;script&gt;</code></a
+            >
+            elements into an HTML file, but using Vite will allow you to spend
+            more time building your app and less time fussing with setup.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Moving_on_to_main">
+        <header>Moving on to main</header>
+        <div class="section-content">
+          <p>
+            Let's open <code>src/main.jsx</code>, because that's where the
+            <code>&lt;App /&gt;</code> component is being used. This file is the
+            entry point for our app, and it initially looks like this:
+          </p>
+          <div class="code-example">
+            <div class="example-header">
+              <span class="language-name">jsx</span
+              ><button type="button" class="icon copy-icon">
+                <span class="visually-hidden">Copy to Clipboard</span></button
+              ><span
+                class="copy-icon-message visually-hidden"
+                role="alert"
+              ></span>
+            </div>
+            <pre
+              class="brush: jsx notranslate"
+              data-signature="Vytqxq6Tmi8O2nLJjWYF1uEcR8uUWRV10peF6m+uHus="
+            ><code><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">"react-dom/client"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">"./App.jsx"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"./index.css"</span><span class="token punctuation">;</span>
+
+ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">React.StrictMode</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">React.StrictMode</span></span><span class="token punctuation">&gt;</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+          </div>
+          <p>
+            As with <code>App.jsx</code>, the file starts by importing all the
+            JS modules and other assets it needs to run.
+          </p>
+          <p>
+            The first two statements import the <code>React</code> and
+            <code>ReactDOM</code> libraries because they are referenced later in
+            the file. We don't write a path or extension when importing these
+            libraries because they are not local files. In fact, they are listed
+            as dependencies in our <code>package.json</code> file. Be careful of
+            this distinction as you work through this lesson!
+          </p>
+          <p>
+            We then import our <code>App()</code> function and
+            <code>index.css</code>, which holds global styles that are applied
+            to our whole app.
+          </p>
+          <p>
+            We then call the <code>ReactDOM.createRoot()</code> function, which
+            defines the root node of our application. This takes as an argument
+            the DOM element inside which we want our React app to be rendered.
+            In this case, that's the DOM element with an ID of
+            <code>root</code>. Finally, we chain the
+            <code>render()</code> method onto the
+            <code>createRoot()</code> call, passing it the JSX expression that
+            we want to render inside our root. By writing
+            <code>&lt;App /&gt;</code> as this JSX expression, we're telling
+            React to call the <code>App()</code> <em>function</em> which renders
+            the <code>App</code> <em>component</em> inside the root node.
+          </p>
+          <div class="notecard note" id="sect4">
+            <p>
+              <strong>Note:</strong> <code>&lt;App /&gt;</code> is rendered
+              inside a special <code>&lt;React.StrictMode&gt;</code> component.
+              This component helps developers catch potential problems in their
+              code.
+            </p>
+          </div>
+          <p>You can read up on these React APIs, if you'd like:</p>
+          <ul>
+            <li>
+              <a
+                href="https://react.dev/reference/react-dom/client/createRoot"
+                class="external"
+                target="_blank"
+                ><code>ReactDOM.createRoot()</code></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://react.dev/reference/react/StrictMode"
+                class="external"
+                target="_blank"
+                ><code>React.StrictMode</code></a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="main-section" id="Starting_Fresh">
+        <header>Starting Fresh</header>
+        <div class="section-content">
+          <p>
+            Before we start building our app, we're going to delete some of the
+            boilerplate code that Vite provided for us.
+          </p>
+          <p>
+            First, as an experiment, change the
+            <a href="/en-US/docs/Web/HTML/Element/Heading_Elements"
+              ><code>&lt;h1&gt;</code></a
+            >
+            element in <code>App.jsx</code> so that it reads "Hello, World!",
+            then save your file. You'll notice that this change is immediately
+            rendered in the development server running at
+            <code>http://localhost:3000</code> in your browser. Bear this in
+            mind as you work on your app.
+          </p>
+          <p>
+            We won't be using the rest of the code! Replace the contents of
+            <code>App.jsx</code> with the following:
+          </p>
+          <div class="code-example">
+            <div class="example-header">
+              <span class="language-name">jsx</span
+              ><button type="button" class="icon copy-icon">
+                <span class="visually-hidden">Copy to Clipboard</span></button
+              ><span
+                class="copy-icon-message visually-hidden"
+                role="alert"
+              ></span>
+            </div>
+            <pre
+              class="brush: jsx notranslate"
+              data-signature="7C4xisO1Z+EhUlmoL/oecjvqdup83MJsR7sKeoe1WS4="
+            ><code><span class="token keyword">import</span> <span class="token string">"./App.css"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Hello, World!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span>
+</code></pre>
+          </div>
+        </div>
+      </section>
+      <section class="main-section" id="Summary">
+        <header>Summary</header>
+        <div class="section-content">
+          <p>
+            This brings us to the end of our initial look at React, including
+            how to install it locally, creating a starter app, and how the
+            basics work. In the next article, we'll start building our first
+            proper application — a todo list. Before we do that, however, let's
+            recap some of the things we've learned.
+          </p>
+          <p>In React:</p>
+          <ul>
+            <li>
+              Components can import modules they need and must export themselves
+              at the bottom of their files.
+            </li>
+            <li>Component functions are named with <code>PascalCase</code>.</li>
+            <li>
+              You can render JavaScript expressions in JSX by putting them
+              between curly braces, like <code>{so}</code>.
+            </li>
+            <li>
+              Some JSX attributes are different than HTML attributes so that
+              they don't conflict with JavaScript reserved words. For example,
+              <code>class</code> in HTML translates to <code>className</code> in
+              JSX.
+            </li>
+            <li>
+              Props are written just like attributes inside component calls and
+              are passed into components.
+            </li>
+          </ul>
+          <ul class="prev-next">
+            <li>
+              <a
+                class="button secondary"
+                href="/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Main_features"
+                ><span class="button-wrap"> Previous </span></a
+              >
+            </li>
+            <li>
+              <a
+                class="button secondary"
+                href="/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks"
+                ><span class="button-wrap">
+                  Overview: Client-side JavaScript frameworks</span
+                ></a
+              >
+            </li>
+            <li>
+              <a
+                class="button secondary"
+                href="/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_todo_list_beginning"
+                ><span class="button-wrap"> Next </span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
